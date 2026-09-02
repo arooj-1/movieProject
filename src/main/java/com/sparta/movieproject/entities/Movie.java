@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name = "movies", schema = "cinemadb")
+@Table(name = "movies", schema = "cinemabookingdb")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,20 +16,6 @@ public class Movie {
     @NotNull
     @Column(name = "title", nullable = false, length = 150)
     private String title;
-
-    @Size(max = 50)
-    @Column(name = "genre", length = 50)
-    private String genre;
-
-    @Column(name = "duration_minutes")
-    private Integer durationMinutes;
-
-    @Column(name = "release_date")
-    private LocalDate releaseDate;
-
-    @Size(max = 10)
-    @Column(name = "rating", length = 10)
-    private String rating;
 
     public Integer getId() {
         return id;
@@ -47,38 +31,6 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public Integer getDurationMinutes() {
-        return durationMinutes;
-    }
-
-    public void setDurationMinutes(Integer durationMinutes) {
-        this.durationMinutes = durationMinutes;
-    }
-
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
     }
 
 }
