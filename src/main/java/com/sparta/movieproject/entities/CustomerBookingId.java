@@ -2,21 +2,28 @@ package com.sparta.movieproject.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class CustomerBookingId implements Serializable {
-    private static final long serialVersionUID = -5633390731904197102L;
-    @NotNull
+
+    private static final long serialVersionUID = 1L;
+
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;
 
-    @NotNull
     @Column(name = "booking_id", nullable = false)
     private Integer bookingId;
+
+    public CustomerBookingId() {
+    }
+
+    public CustomerBookingId(Integer customerId, Integer bookingId) {
+        this.customerId = customerId;
+        this.bookingId = bookingId;
+    }
 
     public Integer getCustomerId() {
         return customerId;
@@ -36,11 +43,16 @@ public class CustomerBookingId implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CustomerBookingId entity = (CustomerBookingId) o;
-        return Objects.equals(this.customerId, entity.customerId) &&
-                Objects.equals(this.bookingId, entity.bookingId);
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof CustomerBookingId that)) {
+            return false;
+        }
+
+        return Objects.equals(customerId, that.customerId)
+                && Objects.equals(bookingId, that.bookingId);
     }
 
     @Override
