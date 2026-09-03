@@ -19,9 +19,9 @@ public class MovieController {
 
     //    @GetMapping(value = "/")
     @GetMapping()
-    public ResponseEntity<List<MovieDto>> getAllCustomers() {
-        var customers = service.getAllMovies();
-        return ResponseEntity.ok(customers);
+    public ResponseEntity<List<MovieDto>> getAllMovies() {
+        var movies = service.getAllMovies();
+        return ResponseEntity.ok(movies);
     }
 
     @GetMapping("/{id}")
@@ -40,6 +40,7 @@ public class MovieController {
         return ResponseEntity.status(201).body(savedMovie);
     }
 
+    @PutMapping("/{id}")
     public ResponseEntity<MovieDto> updateMovie(@PathVariable Integer id, @RequestBody MovieDto movie) {
         movie.setId(id);
         try {
@@ -51,7 +52,7 @@ public class MovieController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMvoie(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteMovie(@PathVariable Integer id) {
         boolean deleted = service.deleteMovie(id);
         if (deleted) {
             return ResponseEntity.noContent().build();
