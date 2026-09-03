@@ -1,7 +1,8 @@
 package com.sparta.movieproject.repository;
-
 import com.sparta.movieproject.entities.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MovieRepository extends JpaRepository<Movie, Integer> {
+@Repository
+public interface MovieRepository extends JpaRepository<Movie,Integer> {
 }
